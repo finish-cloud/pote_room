@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to:'rooms#index'
 
-  get '/users/:id', to: 'users#show', as: 'user'
+  root to:'rooms#top'
+
+  get 'rooms/index'
+  get "users/index" => "users#index"
+
+  resources :users
+  resources :rooms
 end
