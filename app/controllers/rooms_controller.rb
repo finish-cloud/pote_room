@@ -19,6 +19,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def edit
@@ -35,6 +36,10 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room.destroy
     redirect_to rooms_index_path
+  end
+
+  def confirm
+    @room = Room.find(params[:id])
   end
 
   def own_rooms

@@ -10,3 +10,5 @@ ActiveStorage.start();
 import "bootstrap/dist/js/bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
 import "users/devise";
+import "../stylesheets/application";
+import "../stylesheets/navbar";
