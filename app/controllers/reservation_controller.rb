@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
     room = Room.find(params[:room_id])
 
     if current_user == room.user
-      flash[:alert] = "You cannot book your own property!"
+      flash[:alert] = "自分の宿には予約できません"
     else
       start_date = Date.parse(reservation_params[:start_date])
       end_date = Date.parse(reservation_params[:end_date])
@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
       @reservation.total = room.price * days * people
       @reservation.save
 
-      flash[:notice] = "Booked Successfully!"
+      flash[:notice] = "予約完了"
     end
     redirect_to room
   end
