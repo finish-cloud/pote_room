@@ -1,6 +1,17 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @reservations = Reservation.all
+    @rooms = Room.all
+  end
+
+  def new
+    @reservation = Reservation.new
+    # binding.pry
+    @room = Room.find(params[:id])
+  end
+
   def create
     room = Room.find(params[:room_id])
 
@@ -21,6 +32,16 @@ class ReservationsController < ApplicationController
       flash[:notice] = "予約完了"
     end
     redirect_to room
+  end
+
+  def show
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to reservations_path
   end
 
   private

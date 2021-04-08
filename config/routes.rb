@@ -5,7 +5,13 @@ Rails.application.routes.draw do
 
   get 'rooms/index'
   get "users/index" => "users#index"
+  get "rooms/own_room" => "rooms#own_room"
 
   resources :users
   resources :rooms
+  resources :reservations
+
+  resources :rooms do
+    resources :reservations
+  end
 end

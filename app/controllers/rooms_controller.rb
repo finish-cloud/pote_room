@@ -40,6 +40,11 @@ class RoomsController < ApplicationController
     redirect_to rooms_index_path
   end
 
+  def own_rooms
+    @room = Room.find(params[:id])
+    @own_room = @room.user_id == current_user.id
+  end
+
   private
   def room_params
     params.require(:room).permit(:name, :introduction, :price, :address, :image)

@@ -1,0 +1,45 @@
+<div class="room_index_view">
+
+<h2>予約一覧</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr class="posts_index_title">
+            <th>画像</th>
+            <th >ルーム名</th>
+            <th class="post_introduce post_media">ルーム紹介</th>
+            <th class="post_media">合計金額</th>
+            <th class="post_media">予約確定日</th>
+            <th>予約確認</th>
+            <th>キャンセル</th>
+        </tr>
+    </thead>
+
+    <tbody class="posts_tbody">
+        <% current_user.reservations.each do |post| %>
+            <tr class="outer">
+
+                <div class="posts_index_list">
+                  <td class="align-middle text-center">
+                  <% if reservation.room_image? %>
+                  <%= link_to"/rooms/#{reservation.room_id}" do %>
+                    <%= image_tag reservation.room_image, class:"post_show_img" %>
+                  <% end %>
+                  <% else %>
+                  <%= link_to"/rooms/#{reservation.room_id}" do %>
+                    <%= image_tag '/default.png', class:"post_show_img"%>
+                  <% end %>
+                  <% end %>
+                  </td>
+                  <td class="align-middle text-center"><%= link_to post.room_name,"/rooms/#{reservation.room_id}" %></td>
+                  <td class="post_media"><%= link_to reservation.room_introduction, "/rooms/#{reservation.room_id}" %></td>
+                  <td class="align-middle text-center post_media"><%= reservation.price %>円</td>
+                  <td class="align-middle text-center post_media"><%= reservation.updated_at.strftime('%Y月%m日%d日') %></td>
+                  <td class="align-middle text-center"><%= link_to "確認", reservation, class:"textdeco"%></td>
+                  <td class="align-middle text-center"><%= link_to "キャンセル", reservation, method: :delete, data:{confirm:"本当にキャンセルしますか？"}, class:"textdeco" %></td>
+              </div>
+            </tr>
+              <% end %>
+      </tbody>
+  </table>
+</div>
