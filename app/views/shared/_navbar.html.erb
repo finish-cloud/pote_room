@@ -1,14 +1,24 @@
 <!-- Static navbar -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <%= link_to "", root_path, class: "navbar__brand navbar__mainLogo" %>
+    <%= link_to "Poteshare", root_path, class: "navbar__brand navbar__mainLogo" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedConten" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-      <%= link_to "poteshare", root_path, class: "navbar-brand" %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
+      <div class="header">
+        <div class="header_left">
 
+            <i class="fas fa-map-marker-alt form1 d-none d-lg-block"></i>
+            <%= search_form_for @q do |f| %>
+                <%= f.text_field :address_cont, placeholder: 'エリア検索',class:"index_input form-control d-none d-lg-block " %>
+            <% end %>
+
+            <i class="fas fa-search form1 d-none d-lg-block"></i>
+            <%= search_form_for @q do |f| %>
+                <%= f.text_field :name_or_address_or_introduction_cont, placeholder: 'キーワード検索',class:"index_input form-control d-none d-lg-block " %>
+            <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if (!user_signed_in?) %>
             <li><%= link_to "ログイン", new_user_session_path %></li>

@@ -4,6 +4,7 @@
   <p>検索結果： <%= @count %> </p>
 
   <div class="card-deck">
+    <% @search_articles.each do |room| %>
         <div class="col-sm-6 col-lg-4 col-xl-3">
           <div class="card">
             <%= link_to room ,class:"card_link" do %>
@@ -23,6 +24,6 @@
             <% end %>
           </div>
         </div>
+    <% end %>
   </div>
 </div>
-

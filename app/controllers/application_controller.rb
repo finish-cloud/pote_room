@@ -9,4 +9,13 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
       devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     end
+
+    before_action :set_search
+
+    def set_search
+      @q = Room.ransack(params[:q])
+      @Room = @q.result
+      @search_articles = @q.result.order(id: "DESC")
+      @count = @search_articles.count
+    end
 end
