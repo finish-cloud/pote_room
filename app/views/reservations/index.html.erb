@@ -16,7 +16,7 @@
     </thead>
 
     <tbody class="posts_tbody">
-        <% current_user.reservations.each do |post| %>
+        <% current_user.reservations.each do |reservation| %>
             <tr class="outer">
 
                 <div class="posts_index_list">
@@ -31,9 +31,9 @@
                   <% end %>
                   <% end %>
                   </td>
-                  <td class="align-middle text-center"><%= link_to post.room_name,"/rooms/#{reservation.room_id}" %></td>
+                  <td class="align-middle text-center"><%= link_to reservation.room_name,"/rooms/#{reservation.room_id}" %></td>
                   <td class="post_media"><%= link_to reservation.room_introduction, "/rooms/#{reservation.room_id}" %></td>
-                  <td class="align-middle text-center post_media"><%= reservation.price %>円</td>
+                  <td class="align-middle text-center post_media"><%= reservation.total %>円</td>
                   <td class="align-middle text-center post_media"><%= reservation.updated_at.strftime('%Y月%m日%d日') %></td>
                   <td class="align-middle text-center"><%= link_to "確認", reservation, class:"textdeco"%></td>
                   <td class="align-middle text-center"><%= link_to "キャンセル", reservation, method: :delete, data:{confirm:"本当にキャンセルしますか？"}, class:"textdeco" %></td>

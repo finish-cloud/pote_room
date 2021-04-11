@@ -1,0 +1,42 @@
+<div class="create">
+
+  <h4>予約確認画面</h4>
+  <%= render "shared/error", obj: @reservation %>
+
+  <div class="create_form">
+
+      <%= form_for @reservation do |f| %>
+          <div class="form-group">
+
+            <hr size=".5px" color="#bbb">
+
+              <div class="confirm">
+                <%= f.text_field :room_id ,class:"profile_textfield form-control",readonly: true %>
+                <%= f.text_field :room_image ,class:"profile_textfield form-control",readonly: true %>
+                <%= f.text_field :room_introduction ,class:"profile_textfield form-control",readonly: true %>
+              </div>
+
+              <%= f.label :room_name %>
+              <%= f.text_field :room_name ,class:"profile_textfield form-control",readonly: true %>
+              <%= f.label :start_day%>
+              <%= f.date_field :start_day ,class:"profile_textfield form-control",readonly: true %>
+              <%= f.label :end_day%>
+              <%= f.date_field :end_day ,class:"profile_textfield form-control",readonly: true %>
+              <%= f.label :member%>
+              <%= f.text_field :member ,class:"profile_textfield form-control",readonly: true %>
+              <%= f.label :total %>
+              <%= f.text_field :total ,class:"profile_textfield form-control",readonly: true %>
+
+
+            </div>
+
+        <div class="actions">
+          <%= f.submit "予約する" %>
+        </div>
+
+          <div class="back_btn" >
+            <%= link_to "戻る", :back %>
+          </div>
+      <% end %>
+  </div>
+</div>
