@@ -18,6 +18,7 @@
                 <p class="card-text">  <%= room.address %></p>
                 <p class="card-text"> <%= number_to_currency(room.price, :unit => "円") %> / 日</p>
                 <p class="card-text"><small class="text-muted">更新日: <%= room.updated_at.strftime('%Y月%m日%d日') %></small></p>
+
             </div>
             <% end %>
           </div>

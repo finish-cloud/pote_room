@@ -10,22 +10,26 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:id])
   end
 
-
-  def confirm
-    @reservation = current_user.reservations.build(reservation_params)
-    @reservation.room = @room
-    @reservation.total = @room.price * @reservation.member * (@reservation.end_date.to_date - @reservation.start_date.to_date).to_i
-  end
-
   def create
-    @reservation = Reservation.new(reservation_params)
-    @reservation.user_id = current_user.id
-    if @reservation.save
-      redirect_to reservations_path
+    room = Room.find(params[:room_id])
+
+    if current_user == room.user
+      flash[:alert] = "自分の宿には予約できません"
     else
-      flash[:notice] = "エラーが発生しました、下記ご確認の上、再度お試しください。"
-      render :confirm
+      start_date = Date.parse(reservation_params[:start_date])
+      end_date = Date.parse(reservation_params[:end_date])
+      people = Date.parse(reservation_params[:member])
+      days = (end_date - start_date).to_i + 1
+
+      @reservation = current_user.reservations.build(reservation_params)
+      @reservation.room = room
+      @reservation.price = room.price
+      @reservation.total = room.price * days * people
+      @reservation.save
+
+      flash[:notice] = "予約完了"
     end
+    redirect_to room
   end
 
   def show
@@ -40,7 +44,7 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:user, :room,:room_name,:room_image,:room_introduction, :start_date, :end_date, :member, :price)
+    params.require(:reservation).permit(:user, :room,:room_name,:room_image,:room_introduction, :start_day, :end_day, :member ,:price)
   end
 
   def room_params

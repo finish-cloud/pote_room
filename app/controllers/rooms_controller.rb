@@ -51,8 +51,5 @@ class RoomsController < ApplicationController
   def room_params
     params.require(:room).permit(:name, :introduction, :price, :address, :image)
   end
-  def reservation_params
-    params.require(:reservation).permit(:start_date, :end_date, :member ,:total)
-  end
 
 end
