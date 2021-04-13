@@ -1,19 +1,15 @@
 <div class="room_show">
-
   <h1 fontsize="14">ルーム詳細・予約画面</h1>
   <div class="d-flex flex-wrap">
     <div class="col-lg-8 ">
       <div class="card ">
-
         <% if @room.image? %>
           <%= image_tag @room.image.url ,class:"room_show_img" %>
         <% else %>
           <%= image_tag '/default.png', class:"room_show_img"%>
         <% end %>
-
         <div class="card-body">
           <div class="card_title">
-
             <% if @room.user.image? %>
               <%= link_to "#{@room.id}/confirm" do %>
               <div class="room.user_page">
@@ -35,110 +31,45 @@
             </div>
           </div>
           <hr size=".5px" color="#bbb">
-
           <p class="card-text">  <%= simple_format @room.introduction %></p>
-
         </div>
-
       </div>
-
     </div>
-
-
-
-
     <div class="col-lg-4">
-
       <div class="room_show_container">
-
-
-
-
         <%# ここから予約画面へ飛ばすフォーム %>
-
-        <%= form_for @post ,url: "/rooms/#{@room.id}/posts/confirm" do |f| %>
-
-        <%= render "shared/error", obj: @post %>
-
+        <%= form_for @reservation ,url: "/rooms/#{@room.id}/reservations/confirm" do |f| %>
+        <%= render "shared/error",resource: @reservation %>
           Room.price<%= @price %>
-
           <h5>
-
             <%= number_to_currency(@room.price, :unit => "円") %> / 1人あたり1泊
-
           </h5>
-
             <hr size=".5px" color="#bbb">
-
           <div class="form-group">
-
-
-
-
-
-
-
-              <%= f.label :start_day%>
-
-              <%= f.date_field :start_day ,class:"profile_textfield form-control",value: Time.now.strftime("%Y-%m-%d") %>
-
-
-
-              <%= f.label :end_day%>
-
-              <%= f.date_field :end_day ,class:"profile_textfield form-control",value: Time.now.tomorrow.strftime("%Y-%m-%d") %>
-
-
-
-              <%= f.label :peoples%>
-
-              <%= f.number_field :peoples ,class:"profile_textfield form-control",value: 1 %>
-
-
-
-
+              <%= f.label :start_date%>
+              <%= f.date_field :start_date ,class:"profile_textfield form-control",value: Time.now.strftime("%Y-%m-%d") %>
+              <%= f.label :end_date%>
+              <%= f.date_field :end_date ,class:"profile_textfield form-control",value: Time.now.tomorrow.strftime("%Y-%m-%d") %>
+              <%= f.label :member%>
+              <%= f.number_field :member ,class:"profile_textfield form-control",value: 1 %>
               <br>
-
             <% if user_signed_in? %>
-
               <button type="submit" class="btn btn-primary">予約確認へ進む</button>
-
             <% else %>
-
               <div class="edit_btn">
-
               <%= link_to("ログイン",new_user_session_path) %>
-
               </div>
-
             <% end %>
-
           </div>
-
         <% end %>
-
         <%# ここまで予約画面へ飛ばすフォーム %>
-
         <% if user_signed_in? && @room.user.id == current_user.id %>
-
           <%= link_to"編集", edit_room_path(@room) ,class:"btn btn-primary"%>
-
           <%= link_to"削除", room_path(@room), method: :delete ,data:{confirm:"削除しますか？"},class:"btn btn-primary"%>
-
         <% end %>
-
-
-
-
-
-
-
       </div>
-
     </div>
-
   </div>
-
 </div>
 
 

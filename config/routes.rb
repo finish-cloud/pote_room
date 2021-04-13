@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'rooms/index'
   get "users/index" => "users#index"
   get "rooms/own_room" => "rooms#own_room"
+  post "rooms/:id/reservations/confirm" => "reservations#confirm"
 
   resources :users
   resources :rooms

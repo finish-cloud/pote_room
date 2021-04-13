@@ -11,25 +11,22 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    room = Room.find(params[:room_id])
-
-    if current_user == room.user
-      flash[:alert] = "自分の宿には予約できません"
-    else
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user_id = current_user.id
+    @room = Room.find(params[:id])
       start_date = Date.parse(reservation_params[:start_date])
       end_date = Date.parse(reservation_params[:end_date])
       people = Date.parse(reservation_params[:member])
       days = (end_date - start_date).to_i + 1
 
       @reservation = current_user.reservations.build(reservation_params)
-      @reservation.room = room
-      @reservation.price = room.price
-      @reservation.total = room.price * days * people
-      @reservation.save
-
-      flash[:notice] = "予約完了"
-    end
-    redirect_to room
+      @reservation.room_id = @room.id
+      @reservation.room_name = @room.name
+      @reservation.room_image = @room.image
+      @reservation.room_introduction = @room.introduction
+      render :confirm if @reservation.invalid?
+      @reservation.price = @room.price
+      @reservation.total = @room.price * days * people
   end
 
   def show
