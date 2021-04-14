@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:id])
   end
 
-  def confirm
+  def recognize
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
     @room = Room.find(params[:id])
@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
     @reservation.room_name = @room.name
     @reservation.room_image = @room.image
     @reservation.room_introduction = @room.introduction
-    render :confirm if @reservation.invalid?
+    render :recognize if @reservation.invalid?
     @reservation.price = @room.price
     @reservation.total = @room.price * @reservation.member * (@reservation.end_date.to_date - @reservation.start_date.to_date).to_i
   end
@@ -45,7 +45,7 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:user_id, :room_id, :room_name, :room_image,:room_introduction, :start_date, :end_date, :member ,:price)
+    params.require(:reservation).permit(:user_id, :room_id, :room_name, :room_image,:room_introduction, :start_date, :end_date, :member ,:total)
   end
 
   def room_params

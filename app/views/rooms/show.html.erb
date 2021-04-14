@@ -11,7 +11,7 @@
         <div class="card-body">
           <div class="card_title">
             <% if @room.user.image? %>
-              <%= link_to "#{@room.id}/confirm" do %>
+              <%= link_to "#{@room.id}/profile" do %>
               <div class="room.user_page">
                 <%= image_tag @room.user.img.url, :height=>"40", class:"usericon" %><br>
                 <%= @room.user.name %>
@@ -38,7 +38,7 @@
     <div class="col-lg-4">
       <div class="room_show_container">
         <%# ここから予約画面へ飛ばすフォーム %>
-        <%= form_for @reservation ,url: "/rooms/#{@room.id}/reservations/confirm" do |f| %>
+        <%= form_for @reservation ,url: "/rooms/#{@room.id}/reservations/recognize" do |f| %>
         <%= render "shared/error",resource: @reservation %>
           Room.price<%= @price %>
           <h5>
@@ -65,7 +65,7 @@
         <%# ここまで予約画面へ飛ばすフォーム %>
         <% if user_signed_in? && @room.user.id == current_user.id %>
           <%= link_to"編集", edit_room_path(@room) ,class:"btn btn-primary"%>
-          <%= link_to"削除", room_path(@room), method: :delete ,data:{confirm:"削除しますか？"},class:"btn btn-primary"%>
+          <%= button_to "削除", room_path(@room), method: :delete, data: { confirm: "本当に削除しますか？" } , class:"btn btn-primary"%>
         <% end %>
       </div>
     </div>

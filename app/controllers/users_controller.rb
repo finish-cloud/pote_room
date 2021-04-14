@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    # ログイン済ユーザーのみにアクセスを許可する
+  before_action :authenticate_user!
   def index
     @users = User.all
   end
@@ -17,9 +19,10 @@ class UsersController < ApplicationController
     end
   end
 
-  # def show
-  #   @user = User.find(params[:id])
-  # end
+  def show
+    @user = User.find(params[:id])
+    @room = @user.rooms
+  end
 
   def edit
     @user = User.find(params[:id])
@@ -27,12 +30,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    if @user.update(email: params[:email], password: params[:password],name: params[:name],img: params[:imgage, introduction: params[:introduction])
-      redirect_to("/users/index")
-    else
-      render ("/users/index")
-    end
   end
 
   def destroy
@@ -44,6 +41,8 @@ class UsersController < ApplicationController
   def account
     @user = User.find(params[:id])
   end
-  # ログイン済ユーザーのみにアクセスを許可する
-  before_action :authenticate_user!
+
+  def profile
+    @user = User.find(params[:id])
+  end
 end
