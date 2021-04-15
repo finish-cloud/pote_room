@@ -5,17 +5,20 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name])
-    end
+  # deviseコントローラーにストロングパラメータを追加する
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-    before_action :set_search
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :introduction, :image])
+  end
 
-    def set_search
-      @q = Room.ransack(params[:q])
-      @Room = @q.result
-      @search_articles = @q.result.order(id: "DESC")
-      @count = @search_articles.count
-    end
+  before_action :set_search
+
+  def set_search
+    @q = Room.ransack(params[:q])
+    @Room = @q.result
+    @search_articles = @q.result.order(id: "DESC")
+    @count = @search_articles.count
+  end
 end

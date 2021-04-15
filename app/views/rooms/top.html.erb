@@ -1,9 +1,9 @@
 <div class="head">
-  <div class="top_container">
-    <h5>poteshareで、旅をもっと身近にしよう</h5> <br>
-    <p>エリア</p>
+  <div class="form-area">
+    <p class="form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
+      <label for="___">エリア</label>
       <%= search_form_for @q do |f| %>
-        <%= f.text_field :address_cont,placeholder: '東京',class:"index_input form-control" %>
+        <%= f.text_field :address_cont,placeholder: '東京',class:"form-control" %>
         <%= f.submit "検索" ,class:"btn btn-primary"%>
       <% end %>
   </div>

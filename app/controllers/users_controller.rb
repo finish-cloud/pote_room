@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:name], email: params[:email], password: params[:password], img: "home.jpg",)
+    @user = User.new(name: params[:name], email: params[:email], password: params[:password], image: "home.jpg",)
     if @user.save
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to ("/users/#{@user.id}")
@@ -19,10 +19,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-    @room = @user.rooms
-  end
+  # def show
+  #   @user = User.find(params[:id])
+  # end
 
   def edit
     @user = User.find(params[:id])
@@ -30,9 +29,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
     if @user.update(email: params[:email], password: params[:password],name: params[:name],image: params[:image], introduction: params[:introduction])
-      redirect_to("/users/index")
+      redirect_to ("/users/index")
     else
       render ("/users/index")
     end

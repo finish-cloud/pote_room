@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   post "rooms/:id/reservations/recognize" => "reservations#recognize"
   get "rooms/:id/suggest" => "rooms#suggest"
 
+  get "users/index" => "users#index"
 
-  resources :users, only: [:show, :update]
+  resources :users
   resources :rooms
   resources :reservations
 
@@ -19,6 +20,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'account', to: 'users/registrations#account', as: 'account'
-    patch 'update', to: 'users/registrations#update', as: 'update'
+    patch 'profile_update', to: 'users/registrations#profile_update', as: 'profile_update'
   end
 end

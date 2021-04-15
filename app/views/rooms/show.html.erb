@@ -19,7 +19,7 @@
               <% end %>
             <% else %>
               <div class="room.user_page">
-                <%= link_to user_path(@room.user) do %>
+                <%= link_to (@room.user) do %>
                   <%= image_tag "default.png" ,:height=>"40" , class:"usericon" %>
                   <%= @room.user.name %>
                 <% end %>

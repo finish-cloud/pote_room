@@ -4,23 +4,25 @@
   height: 77px;
   &__brand {
     height: 35px;
-    width: 176px;
+    width: 300px;
     background-size: 114px;
   }
   &-nav {
     & > li {
-      margin-left: 20px;
+      margin-left: 40px;
       &:first-child {
-        margin-left: 0;
+        margin-left: 50px;
       }
       .commonNavIcon {
         height: 24px;
         width: 24px;
         background-size: 22px !important;
         background-repeat: no-repeat;
+        margin-left: 20px;
       }
       .profile-icon {
         background-image: url("default.png");
+        margin-left: 10px;
       }
     }
   }

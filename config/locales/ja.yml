@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        introduction: 一言紹介
+        image: 画像
+      room:
+        name: ルーム名
+        address: 住所
+        price: 金額/1人、1泊
+        introduction: 紹介文
+        image: ルーム画像
+      post:
+        room_name: ルーム名
+        start_date: チェックイン日
+        end_date: チェックアウト日
+        member: 人数
+        total: 合計金額

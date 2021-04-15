@@ -21,7 +21,7 @@
       <hr size="1px" color="#e7e7e7">
 
       <div class="mb-3">
-        <%= form_for current_user, url: {action: 'update'} do |f| %>
+        <%= form_for current_user, url: {action: 'profile_update'} do |f| %>
             <%= f.label :name %>
             <%= f.text_field :name ,class:"profile_textfield form-control" %> <br>
 
@@ -29,13 +29,13 @@
             <%= f.text_area :introduction,class:"form-control",style:"height: 100px" %> <br>
 
 
-            <%= f.label :img  %>
-            <%= f.file_field :img ,class:"form-control"%> <br>
+            <%= f.label :image  %>
+            <%= f.file_field :image ,class:"form-control"%> <br>
 
             <div class="prof_edit_img">
             <p><small>現在のアイコン</small></p>
               <% if current_user.image? %>
-                  <%= image_tag current_user.img.url ,class: "icon"%>
+                  <%= image_tag current_user.image.url ,class: "icon"%>
               <% else %>
                   <%= image_tag "default.png" ,class: "icon" %>
               <% end %>
