@@ -1,45 +1,45 @@
 <!-- Static navbar -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark mt-3 mb-3">
   <div class="container">
-    <%= link_to "Poteshare", root_path, class: "navbar__brand navbar__mainLogo" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedConten" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <div class="header">
-        <div class="header_left">
-
+       <%= link_to "Poteshare", root_path, class: "navbar__brand navbar__mainLogo" %>
+        /div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav3" aria-controls="navbarNav3" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+          <div id="navbar" class="navbar-collapse collapse">
+            <div class="header">
+            <div class="header_left">
             <i class="fas fa-map-marker-alt form1 d-none d-lg-block"></i>
             <%= search_form_for @q do |f| %>
                 <%= f.text_field :address_cont, placeholder: 'エリア検索',class:"index_input form-control d-none d-lg-block " %>
             <% end %>
-
             <i class="fas fa-search form1 d-none d-lg-block"></i>
             <%= search_form_for @q do |f| %>
                 <%= f.text_field :name_or_address_or_introduction_cont, placeholder: 'キーワード検索',class:"index_input form-control d-none d-lg-block " %>
             <% end %>
-      <ul class="nav navbar-nav navbar-right">
-        <% if (!user_signed_in?) %>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
-            <li><%= link_to "登録", new_user_registration_path %></li>
-        <% else %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                    role="button" aria-haspopup="true" aria-expanded="false">
-                    <%= current_user.email %></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "ルーム一覧", rooms_index_path %></li>
-                <li><%= link_to "ルーム登録", new_room_path %></li>
-                <li><%= link_to "予約済みルーム一覧", reservations_path%></li>
-                <li><%= link_to "登録済みルーム一覧", rooms_own_room_path %></li>
-                <li><%= link_to "設定", edit_user_registration_path %></li>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-              </ul>
-            </li>
-        <% end %>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
+            </div>
+        <div class="collapse navbar-collapse" id="navbarNav3">
+          <ul class="nav navbar-nav navbar-right">
+            <% if (!user_signed_in?) %>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+                <li><%= link_to "登録", new_user_registration_path %></li>
+            <% else %>
+            <li><%= current_user.email %></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">
+                        <%= current_user.email %></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "ルーム一覧", rooms_index_path %></li>
+                    <li><%= link_to "ルーム登録", new_room_path %></li>
+                    <li><%= link_to "予約済みルーム一覧", reservations_path%></li>
+                    <li><%= link_to "登録済みルーム一覧", rooms_own_room_path %></li>
+                    <li><%= link_to "設定", edit_user_registration_path %></li>
+                    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+    </nav>

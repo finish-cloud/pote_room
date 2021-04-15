@@ -17,4 +17,9 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :reservations
   end
+
+  devise_scope :user do
+    get 'account', to: 'users/registrations#account', as: 'account'
+    patch 'update', to: 'users/registrations#update', as: 'update'
+  end
 end

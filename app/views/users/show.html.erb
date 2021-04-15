@@ -1,29 +1,46 @@
-<div class="profile_container">
-  <div class="create">
-    <h3>管理者プロフィール</h3>
-    <hr size=".5px" color="#bbb">
+<div class="edit_container">
 
-    <div class="create_form">
-        <div class="form-group">
-          <div class="posts_tbody">
-            <% if @room.user.image? %>
-              <div class="room.user_page">
-                <%= image_tag @room.user.img.url,class:"room_show_img" %><br>
-              </div>
-            <% else %>
-              <div class="room.user_page">
-                  <%= image_tag "default.png",class:"room_show_img" %>
-              </div>
-            <% end %>
-            <br><br>
-            <h6>ホスト名：<%= @room.user.name %> <br><br></h6>
-            <h6>自己紹介：<%= @room.user.introduction %> <br><br></h6>
+
+  <div class="user_sidemenu d-none d-lg-block">
+    <ul>
+      <div class="nav flex-column nav-pills " >
+        <li><%= link_to("アカウント","/users/show", class:"nav-link active")%></li>
+        <li><%= link_to("プロフィール",account_path,class:"nav-link") %></li>
+      </div>
+    </ul>
+  </div>
+
+    <div class="profile_container">
+
+        <nav class="d-block d-lg-none">
+        <div class="nav nav-tabs " id="nav-tab" role="tablist">
+            <li><%= link_to("アカウント","/users/show", class:"nav-link active")%></li>
+            <li><%= link_to("プロフィール",account_path,class:"nav-link") %></li>
+        </div>
+        </nav>
+
+        <div class="profile_box">
+
+            <h3>アカウント編集</h3>
+
+
+            <div class="show_container">
+                <hr size="1px" color="#e7e7e7">
+                <div class="show_pass">
+                    <h5>メールアドレス</h5>
+                    <p><%= current_user.email %></p>
+                </div>
+                <hr size="1px" color="#e7e7e7">
+                <div class="show_pass">
+                    <h5>パスワード</h5>
+                    <p>＊＊＊＊＊＊</p>
+                </div>
+                <hr size="1px" color="#e7e7e7">
+            </div>
 
             <div class="edit_btn">
-              <%= link_to("戻る",room_path)%>
+                <%= link_to("編集",edit_user_registration_path)%>
             </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
