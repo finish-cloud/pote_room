@@ -1,0 +1,290 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// sign up , login
+
+input {
+    border: 1px solid #b5b5b5;
+    border-radius: 5px;
+    padding: 3px;
+}
+textarea {
+    border: 1px solid #b5b5b5;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.create{
+    height: auto;
+    width: 500px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 5px .1px rgba(0, 0, 0, .1);
+    padding:  40px 10px;
+    margin: 30px auto;
+}
+
+.create > p {
+    font-size:2px;
+    margin: 0 ;
+}
+
+.create li{
+    list-style: none;
+}
+
+.create em{
+    font-size: 12px;
+    align-items: center;
+    color: #FF7068;
+}
+
+.create_form{
+    text-align: center;
+    display: inline-block;
+}
+
+.create_input{
+    width: 280px;
+    height: 30px;
+    border: 1px solid rgb(211, 208, 208);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.create_btn{
+    background-color: #4B8FE2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 350px;
+    height: 40px;
+    margin: 10px 0;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .2s;
+    margin: 30px 0;
+}
+
+.create_btn:hover{
+    opacity: .8;
+}
+
+.login{
+    color: #4B8FE2;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.signup_checkbox_field{
+    text-align: center;
+    margin: 10px 0;
+}
+
+.signup_checkbox_text{
+    font-size: 15px;;
+}
+
+.create_link{
+    color: #4B8FE2;
+    text-decoration: none;
+}
+
+// == prorfile_sidemenu ==
+
+.user_sidemenu  {
+    display: block;
+    padding: 30px 30px;
+    text-decoration: none;
+    color: #000000;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px #b5b5b5;
+}
+
+.user_sidemenu ul {
+    padding: 0;
+}
+
+.user_sidemenu a{
+    margin-bottom: 20px;
+}
+
+
+// ==== users/edit ボックス====
+
+.edit_container{
+    display: flex;
+    background-color: #f5f8f9;
+    margin: 0;
+}
+
+.profile_container{
+    margin: 30px auto;
+}
+
+.profile_box{
+    border: none;
+    background-color: #fff;
+    padding: 30px 40px;
+    box-shadow: 0px 0px 10px #b5b5b5;
+    width: 800px;
+}
+
+
+
+@media screen and (max-width: 990px) {
+    .profile_box{
+        border: none;
+        background-color: #fff;
+        padding: 30px 40px;
+        box-shadow: 0px 0px 10px #b5b5b5;
+        width: 480px;
+    }
+    }
+
+// == users/show ==
+
+.profile_box hr {
+    margin: 20px 0;
+}
+
+.show_pass h5{
+    display: inline-block;
+    width: 200px;
+}
+
+.show_pass p{
+    display: inline-block;
+}
+
+// == edit,backボタン ==
+
+.edit_btn > a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #4B8FE2;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    transition: .2s;
+    width: 200px;
+    height: 50px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+.edit_btn a:hover{
+    opacity: .8;
+}
+
+.back_btn {
+    font-size: 13px;
+    margin: 10px auto;
+    width: 30px;
+    text-align: center;
+}
+
+.actions  {
+    text-align: center;
+}
+
+.actions input {
+    font-size: 15px;
+    margin: 20px 0;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 100px;
+    background-color: #4B8FE2;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    transition: .2s;
+    border: none;
+    cursor: pointer;
+}
+
+.actions input:hover{
+    opacity: .8;
+}
+
+
+//  == profile img ==
+
+.prof_edit_img{
+    text-align: center;
+}
+
+.icon{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+
+// error message
+
+.errormesse{
+    color: #FF7068;
+    font-size: 11px;
+}
+
+.main {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 90%;
+  padding: 100px 75px 100px;
+  display: block;
+  flex: 1;
+  flex-basis: auto;
+  box-sizing: border-box;
+}
+
+.devise-card {
+  border: none;
+}
+
+.form-wrap{
+  max-width: 400px;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.logo-img {
+  background-image: url("~logo.png");
+  background-repeat: no-repeat;
+  height: 56px;
+  width: 180px;
+  background-size: 160px;
+  background-size: 180px!important;
+}
+
+.form-control {
+  border: 1px solid #dcdfe6;
+  font-size: inherit;
+}
+
+.devise-link {
+  text-align: center;
+  margin: 16px 0;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 75px 0;
+  }
+  .devise-card {
+    background-color: #fafafa;
+  }
+}

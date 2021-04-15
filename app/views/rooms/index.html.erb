@@ -1,2 +1,29 @@
-<h1>Rooms#index</h1>
-<p>Find me in app/views/rooms/index.html.erb</p>
+<div class="room_index_view">
+
+  <h2>ルーム一覧</h2>
+  <p>検索結果： <%= @count %> </p>
+
+  <div class="card-deck">
+    <% @search_articles.each do |room| %>
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+          <div class="card">
+            <%= link_to room ,class:"card_link" do %>
+              <% if room.image? %>
+                <img src="<%= room.image %>" class="room_index_img">
+              <% else %>
+                <%= image_tag '/default.png', :class=>"room_index_img"%>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= room.name %></h5>
+                <p class="card-text">  <%= simple_format room.introduction %></p>
+                <p class="card-text">  <%= room.address %></p>
+                <p class="card-text"> <%= number_to_currency(room.price, :unit => "円") %> / 日</p>
+                <p class="card-text"><small class="text-muted">更新日: <%= room.updated_at.strftime('%Y月%m日%d日') %></small></p>
+
+            </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
