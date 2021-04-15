@@ -1,0 +1,40 @@
+<h1>管理者画面：ユーザー一覧</h1>
+  <% if flash.notice %>
+    <p class="notice"><%= flash.notice%></p>
+  <%end%>
+  <p>ログインユーザー：
+  <%= [:user_id] %></p>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ユーザー名</th>
+            <th>メールアドレス</th>
+            <th>パスワード</th>
+            <th>アイコン画像</th>
+            <th>自己紹介</th>
+            <th>作成日</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.password %></td>
+                <td>
+                    <% if user.img? %>
+                        <%= image_tag user.image.url ,class: "icon"%>
+                    <% else %>
+                        <%= image_tag "default.png" ,class: "icon" %>
+                    <% end %></td>
+                <td><%= user.introduction %></td>
+                <td><%= user.created_at.to_s(:datetime_jp) %></td>
+
+                <td><%= link_to("確認","/users/show") %></td>
+                <td><%= link_to("削除", user, method: :delete, data:{confirm:"本当に削除しますか？"}) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -11,9 +11,9 @@
         <div class="card-body">
           <div class="card_title">
             <% if @room.user.image? %>
-              <%= link_to "#{@room.id}/profile" do %>
+              <%= link_to "#{@room.id}/suggest" do %>
               <div class="room.user_page">
-                <%= image_tag @room.user.img.url, :height=>"40", class:"usericon" %><br>
+                <%= image_tag @room.user.image.url, :height=>"40", class:"usericon" %><br>
                 <%= @room.user.name %>
               </div>
               <% end %>

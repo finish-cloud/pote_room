@@ -1,9 +1,9 @@
-.top_area_container h2{
+.top_area_container h2 {
   margin: 20px;
   font-weight: bold;
 }
 
-.top_area_img img{
+.top_area_img img {
   width: 100%;
   height: 350px;
   object-fit: cover;
@@ -12,7 +12,7 @@
   margin-bottom: 20px;
 }
 
-.top_area_img span{
+.top_area_img span {
   position: absolute;
   width: 100%;
   bottom: 50px;
@@ -25,7 +25,7 @@
   text-align: center;
   font-size: 24px;
 }
-.head{
+.head {
   background-image: url(/assets/sunset-129503_1280.jpg);
   height: 500px;
   background-position: center;
@@ -37,7 +37,7 @@
   z-index: -10;
 }
 @media screen and (max-width: 800px) {
-  .head{
+  .head {
     background-image: url(/assets/sunset-129503_1280.jpg);
     height: 500px;
     background-position: center;
@@ -48,16 +48,11 @@
     align-items: center;
     z-index: -10;
   }
-  .top_container{
+  .top_container {
     background-color: #ffffff;
     border-radius: 10px;
     margin: 0 auto;
   }
-}
-
-.top_container{
-  background-color: #ffffff;
-  border-radius: 10px;
 }
 
 .top_container h3 {
@@ -152,4 +147,23 @@ button {
   color: #000;
   opacity: 0.8;
   text-decoration: none;
+}
+
+// Room new
+.create_form {
+  border-bottom: 1px solid #eaedef;
+  padding: 20px;
+  margin: 0 15px;
+  font-size: 16px;
+}
+
+.errormessage {
+  list-style: none;
+  color: tomato;
+  font-size: 20px;
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
 }

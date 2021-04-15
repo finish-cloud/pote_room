@@ -4,13 +4,12 @@ Rails.application.routes.draw do
   root to:'rooms#top'
 
   get 'rooms/index'
-  get "users/index" => "users#index"
   get "rooms/own_room" => "rooms#own_room"
   post "rooms/:id/reservations/recognize" => "reservations#recognize"
+  get "rooms/:id/suggest" => "rooms#suggest"
 
-  get '/users/:id' => 'users#show'
 
-  resources :users
+  resources :users, only: [:show, :update]
   resources :rooms
   resources :reservations
 

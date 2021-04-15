@@ -59,4 +59,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def user_update_path_for(resource)
+    params.require(:user).permit(:name, :image, :introduction)
+    current_user.assign_attributes(account_update_params)
+    if current_user.save
+    redirect_to account_path, notice: 'プロフィールを更新しました'
+    else
+      render "account"
+    end
+  end
+
+  def account
+
+  end
+
+  def update
+    params.require(:user).permit(:name, :image, :introduction)
+    current_user.assign_attributes(account_update_params)
+    if current_user.save
+      redirect_to account_path, notice: 'プロフィールを更新しました'
+    else
+      render "account"
+    end
+  end
+
+  protected
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  end
 end

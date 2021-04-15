@@ -30,6 +30,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    if @user.update(email: params[:email], password: params[:password],name: params[:name],image: params[:image], introduction: params[:introduction])
+      redirect_to("/users/index")
+    else
+      render ("/users/index")
+    end
   end
 
   def destroy

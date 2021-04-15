@@ -1,21 +1,18 @@
 <div class="edit_container">
-
-
   <div class="user_sidemenu d-none d-lg-block">
     <ul>
       <div class="nav flex-column nav-pills " >
-        <li><%= link_to("アカウント","/users/show", class:"nav-link")%></li>
-        <li><%= link_to("プロフィール",profile_edit_path,class:"nav-link active") %></li>
+        <li><%= link_to("アカウント", "/users/show", class:"nav-link")%></li>
+        <li><%= link_to("プロフィール", account_path, class:"nav-link active") %></li>
       </div>
     </ul>
   </div>
 
   <div class="profile_container">
-
     <nav class="d-block d-lg-none">
       <div class="nav nav-tabs " id="nav-tab" role="tablist">
-        <li><%= link_to("アカウント","/users/show", class:"nav-link")%></li>
-        <li><%= link_to("プロフィール",profile_edit_path,class:"nav-link active") %></li>
+        <li><%= link_to("アカウント", "/users/show", class:"nav-link")%></li>
+        <li><%= link_to("プロフィール", account_path,class:"nav-link active") %></li>
       </div>
     </nav>
 
@@ -24,7 +21,7 @@
       <hr size="1px" color="#e7e7e7">
 
       <div class="mb-3">
-        <%= form_for current_user, url: {action: 'profile_update'} do |f| %>
+        <%= form_for current_user, url: {action: 'update'} do |f| %>
             <%= f.label :name %>
             <%= f.text_field :name ,class:"profile_textfield form-control" %> <br>
 
@@ -37,7 +34,7 @@
 
             <div class="prof_edit_img">
             <p><small>現在のアイコン</small></p>
-              <% if current_user.img? %>
+              <% if current_user.image? %>
                   <%= image_tag current_user.img.url ,class: "icon"%>
               <% else %>
                   <%= image_tag "default.png" ,class: "icon" %>

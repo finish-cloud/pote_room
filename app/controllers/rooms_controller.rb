@@ -38,6 +38,10 @@ class RoomsController < ApplicationController
     @own_room = @room.user_id == current_user.id
   end
 
+  def suggest
+    @room = Room.find(params[:id])
+  end
+
   def destroy
     @room = Room.find(params[:id])
     @room.destroy
